@@ -22,7 +22,7 @@ plugins:
 # The `functions` block defines what code to deploy
 functions:
   addition:
-    handler: handler.addition
+    handler: functions/handler.addition
     events:
       - http:
           path: addition
@@ -30,7 +30,7 @@ functions:
           cors: true
 
   subtraction:
-    handler: handler.subtraction
+    handler: functions/handler.subtraction
     events:
       - http:
           path: subtraction
@@ -38,7 +38,7 @@ functions:
           cors: true
 
   hello:
-    handler: handler.hello
+    handler: functions/handler.hello
     events:
       - http:
           path: /
@@ -46,7 +46,7 @@ functions:
           cors: true
   
   name:
-    handler: handler2.name
+    handler: functions/handler2.name
     events:
       - http:
           path: name
