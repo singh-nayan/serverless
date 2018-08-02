@@ -1,0 +1,56 @@
+# Welcome to serverless. Read the docs
+# https://serverless.com/framework/docs/
+
+# Serverless.yml is the configuration the CLI
+# uses to deploy your code to your provider of choice
+
+# The `service` block is the name of the service
+service: serverless-calculate
+
+# The `provider` block defines where your service will be deployed
+provider:
+  name: aws
+  runtime: nodejs6.10
+  environment:    # this environment is available to all the functions
+    NASA_API: https://api.nasa.gov/planetary/apod?api_key=blnT80TbGDki26xpEjqygdOcVe2TWAylm2ntcLQJ
+
+plugins:
+  - serverless-offline
+  
+
+
+# The `functions` block defines what code to deploy
+functions:
+  addition:
+    handler: handler.addition
+    events:
+      - http:
+          path: addition
+          method: get
+          cors: true
+
+  subtraction:
+    handler: handler.subtraction
+    events:
+      - http:
+          path: subtraction
+          method: get
+          cors: true
+
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /
+          method: get
+          cors: true
+  
+  name:
+    handler: handler2.name
+    events:
+      - http:
+          path: name
+          method: get
+          cors: true    
+    environment:
+      MY_NAME: nayan    
